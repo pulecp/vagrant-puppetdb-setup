@@ -1,0 +1,1 @@
+notify {'master works': }
