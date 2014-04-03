@@ -39,7 +39,7 @@ Vagrant.configure('2') do |config|
   config.hostmanager.include_offline = true
 
   ## The base box we will use for ALl the hosts :)
-  config.vm.box = "centos-6.x-64bit-puppet.3.x-chef.0.10.x-vbox.4.2.16-2"
+  config.vm.box = "centos-6.x-64bit-puppet.3.x"
   config.vm.box_url = "http://packages.vstone.eu/vagrant-boxes/centos-6.x-64bit-latest.box"
 
 
