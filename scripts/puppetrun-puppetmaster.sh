@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-environment=${1-production}
+environment=${1-development}
 boxname=${2-unknown}
 sources=${3-puppet}
 
@@ -9,9 +9,11 @@ sources=${3-puppet}
 [ -d /vagrant/graphs/${boxname} ] || mkdir -pv /vagrant/graphs/${boxname}
 [ -f /vagrant/${sources}/puppet.conf-base ] && cp -v /vagrant/${sources}/puppet.conf-base /etc/puppet/puppet.conf
 
+
 ## Use bind mounts so we dont need to reprovision for getting new codes.
-mount -o bind /vagrant/${sources}/manifests /etc/puppet/environments/${environment}/manifests
-mount -o bind /vagrant/${sources}/modules /etc/puppet/environments/${environment}/modules
+[ -d /vagrant/${sources}/modules ] || mkdir -pv /vagrant/${sources}/modules
+mountpoint -q /etc/puppet/environments/${environment}/manifests || mount -o bind /vagrant/${sources}/manifests /etc/puppet/environments/${environment}/manifests
+mountpoint -q /etc/puppet/environments/${environment}/modules || mount -o bind /vagrant/${sources}/modules/default /etc/puppet/environments/${environment}/modules
 
 ## Hiera setup
 [ -f /vagrant/${sources}/hiera.yaml ] && cp -v /vagrant/${sources}/hiera.yaml /etc/puppet/hiera.yaml  || \
@@ -49,7 +51,7 @@ if [ ! -f /var/lib/puppet/ssl/certs/ca.pem ]; then
   puppet cert generate puppetmaster.`hostname -d`
   puppet cert generate `hostname -f`
   puppet cert sign `hostname -f`
-  puppetdb-ssl-setup -f
+  puppetdb ssl-setup -f
 fi;
 
 service puppetdb start
