@@ -1,0 +1,15 @@
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - %{::fqdn}
+  - common
+
+:logger: console
+
+:merge_behavior: deeper
+
+:yaml:
+  :datadir: /etc/puppet/hieradata/%{environment}
+
