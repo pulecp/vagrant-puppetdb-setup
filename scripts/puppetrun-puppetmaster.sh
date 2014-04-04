@@ -13,7 +13,7 @@ sources=${3-puppet}
 ## Use bind mounts so we dont need to reprovision for getting new codes.
 [ -d /vagrant/${sources}/modules ] || mkdir -pv /vagrant/${sources}/modules
 mountpoint -q /etc/puppet/environments/${environment}/manifests || mount -o bind /vagrant/${sources}/manifests /etc/puppet/environments/${environment}/manifests
-mountpoint -q /etc/puppet/environments/${environment}/modules || mount -o bind /vagrant/${sources}/modules/default /etc/puppet/environments/${environment}/modules
+mountpoint -q /etc/puppet/environments/${environment}/modules || mount -o bind /vagrant/${sources}/modules/ /etc/puppet/environments/${environment}/modules
 
 ## Hiera setup
 [ -f /vagrant/${sources}/hiera.yaml ] && cp -v /vagrant/${sources}/hiera.yaml /etc/puppet/hiera.yaml  || \
