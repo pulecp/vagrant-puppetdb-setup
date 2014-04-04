@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-environment=${1-production}
+environment=${1-develop}
 boxname=${2-unknown}
 sources=${3-puppet}
 
