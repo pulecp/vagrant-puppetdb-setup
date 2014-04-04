@@ -7,7 +7,7 @@ set /files/etc/puppet/puppet.conf/master/modulepath '$confdir/environments/$envi
 set /files/etc/puppet/puppet.conf/master/factsignore '.svn CVS .git *.markdown *.md .*.swp'
 set /files/etc/puppet/puppet.conf/master/pluginsignore '.svn CVS .git *.markdown *.md .*.swp'
 set /files/etc/puppet/puppet.conf/master/ca true
-set /files/etc/puppet/puppet.conf/master/autosign '$confdir/autosign.conf { mode = 664 }
+set /files/etc/puppet/puppet.conf/master/autosign '$confdir/autosign.conf { mode = 664 }'
 set /files/etc/puppet/puppet.conf/master/certname 'puppetmaster.DOMAIN'
 set /files/etc/puppet/puppet.conf/master/storeconfigs 'true'
 set /files/etc/puppet/puppet.conf/master/storeconfigs_backend 'puppetdb'
