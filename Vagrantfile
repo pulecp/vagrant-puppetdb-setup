@@ -1,6 +1,4 @@
 
-Vagrant.require_plugin 'vagrant-hostmanager'
-
 domain       = 'dev.vstone.uni'
 puppetmaster = "puppetmaster.#{domain}"
 
