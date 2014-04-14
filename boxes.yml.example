@@ -1,0 +1,11 @@
+:squeeze:
+  :box:       'squeeze'
+  :sourcedir: 'puppet'
+  :ip:        '192.168.127.62'
+  :hostname:  "apply02"
+
+:redhat:
+  :sourcedir: 'puppet'
+# Default domain name is added if the hostname does not end in a . (dot)
+  :hostname:  'redhat01.example.com.'
+

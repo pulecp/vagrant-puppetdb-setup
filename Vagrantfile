@@ -1,9 +1,17 @@
-
 domain       = 'dev.vstone.uni'
 puppetmaster = "puppetmaster.#{domain}"
 
+boxes = File.join(File.dirname(__FILE__), 'boxes.yml')
+if File.exists?(boxes)
+  MORE_BOXES = YAML.load_file(boxes)
+  MORE_BOXES.each do |k,v|
+    if v[:hostname] and v[:hostname] =~ /[^.]$/
+      MORE_BOXES[k][:hostname] = "#{v[:hostname]}.#{domain}"
+    end
+  end
+end
 
-VIRTUAL_MACHINES = {
+VIRTUAL_MACHINES = MORE_BOXES.merge({
   :puppetmaster => {
     :ip             => '192.168.127.20',
     :hostname       => "puppetmaster01.#{domain}",

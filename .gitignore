@@ -1,3 +1,4 @@
 graphs/*/*.dot
 .vagrant/
 puppet/modules
+boxes.yml
