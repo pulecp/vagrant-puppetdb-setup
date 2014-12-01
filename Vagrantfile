@@ -1,6 +1,8 @@
 domain       = 'dev.vstone.uni'
 puppetmaster = "puppetmaster.#{domain}"
 
+MORE_BOXES = {}
+
 boxes = File.join(File.dirname(__FILE__), 'boxes.yml')
 if File.exists?(boxes)
   MORE_BOXES = YAML.load_file(boxes)
@@ -36,7 +38,7 @@ VIRTUAL_MACHINES = MORE_BOXES.merge({
       443 => 46443,
     },
   },
-}
+})
 
 Vagrant.configure('2') do |config|
   ## Hostmanager configuration
@@ -62,6 +64,14 @@ Vagrant.configure('2') do |config|
       vm_config.vm.hostname           = cfg[:hostname]      if cfg[:hostname]
       vm_config.hostmanager.aliases   = cfg[:hostaliases]   if cfg[:hostaliases]
       vm_config.vm.network :private_network, ip: cfg[:ip]   if cfg[:ip]
+
+      vm_config.vm.provider "virtualbox" do |vb|
+        vb.gui = false
+ 
+        # Remove USB
+        vb.customize ["modifyvm", :id, "--usb", "off"]
+        vb.customize ["modifyvm", :id, "--usbehci", "off"]
+      end
 
       if cfg[:forwards]
         cfg[:forwards].each do |guest, host|
