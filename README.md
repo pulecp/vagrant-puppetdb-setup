@@ -1,3 +1,5 @@
+SOURCE: git://git.vstone.org/puppet/vagrant/shelled.git
+
 # Quick Start
 
 ## Files
