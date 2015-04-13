@@ -1,4 +1,4 @@
-SOURCE: git://git.vstone.org/puppet/vagrant/shelled.git
+**SOURCE:** [git.vstone.org](http://git.vstone.org/?p=puppet/vagrant/shelled.git)
 
 # Quick Start
 
@@ -7,7 +7,7 @@ SOURCE: git://git.vstone.org/puppet/vagrant/shelled.git
 * `puppet/manifests/`:        Default manifests location.
 * `puppet/modules/`           Default modules location.
 * `puppet/puppet.conf-base`:  This file is copied over as the puppet.conf file
-* `puppet/hiera.yaml':        If present, this file is used as hiera configuration file.
+* `puppet/hiera.yaml`:        If present, this file is used as hiera configuration file.
 * `hieradata/`:               Default hieradata directory.
 * `graphs/`:                  Contains the generated graphs. Useful for debugging dependency issues.
 
